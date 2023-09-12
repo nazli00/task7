@@ -1,0 +1,75 @@
+using System;
+
+abstract class Storage
+{
+    public string Name { get; set; }
+    public string Model { get; set; }
+
+    public abstract double GetSize();
+    public abstract void Copy(double fileSize);
+    public abstract double FreeMemory();
+    public abstract void PrintDeviceInfo();
+}
+
+class Flash : Storage
+{
+    public double USB3Speed { get; set; }
+    public double MemorySize { get; set; }
+
+    public override double GetSize()
+    {
+        return MemorySize;
+    }
+
+    public override void Copy(double fileSize){ }
+
+    public override double FreeMemory()
+    {
+        return MemorySize;
+    }
+
+    public override void PrintDeviceInfo(){}
+}
+
+class DVD : Storage
+{
+    public double ReadWriteSpeed { get; set; }
+    public string Type { get; set; }
+
+    public override double GetSize()
+    {
+        return 0.0;
+    }
+
+    public override void Copy(double fileSize){}
+
+    public override double FreeMemory()
+    {
+        return GetSize() ;
+    }
+
+    public override void PrintDeviceInfo(){}
+}
+
+class HDD : Storage
+{
+    public double USB2Speed { get; set; }
+    public double TotalSize { get; set; }
+
+    public override double GetSize()
+    {
+        return TotalSize;
+    }
+
+    public override void Copy(double fileSize)
+    {
+        
+    }
+
+    public override double FreeMemory()
+    {
+        return TotalSize ;
+    }
+
+    public override void PrintDeviceInfo(){}
+}
